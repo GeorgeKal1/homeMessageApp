@@ -1,0 +1,226 @@
+li{
+    list-style-type: none;
+    
+}
+/* 1. Global Reset */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #e1e1e1;
+  background-color: #121212; /* Very dark background for the whole page */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Prevents whole page scroll */
+}
+
+/* 2. Main Centered Container */
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle at top right, #1f1f1f, #0d0d0d);
+}
+
+/* 3. The Chat Card/Window */
+.chat-window {
+  width: 100%;
+  max-width: 450px; /* Mobile phone width feel */
+  height: 85vh;     /* Takes up most of the screen height */
+  background-color: #1e1e1e;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column; /* Stacks Header, List, Input vertically */
+  overflow: hidden;
+  border: 1px solid #333;
+}
+
+/* 4. Header */
+.chat-header {
+  padding: 15px 20px;
+  background-color: #252525;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.status-dot {
+  font-size: 0.8rem;
+  color: #4ade80; /* Green */
+  display: flex;
+  align-items: center;
+}
+
+.status-dot::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #4ade80;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+/* 5. Messages Area (Scrollable) */
+.messages-list {
+  flex: 1; /* Takes up all available space */
+  overflow-y: auto; /* Scrolls only this part */
+  padding: 20px;
+  background-color: #161616;
+}
+
+.messages-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Scrollbar styling for Chrome/Safari */
+.messages-list::-webkit-scrollbar {
+  width: 6px;
+}
+.messages-list::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 3px;
+}
+
+/* 6. Message Bubbles */
+.message-bubble {
+  background-color: #2b2b2b;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 18px 18px 18px 2px; /* Chat bubble shape */
+  max-width: 80%;
+  align-self: flex-start; /* Aligns to left */
+  font-size: 0.95rem;
+  line-height: 1.4;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  word-wrap: break-word;
+  animation: popIn 0.3s ease-out; /* Little pop animation */
+}
+
+/* Animation for new messages */
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 7. Input Area (Fixed at bottom) */
+.chat-input-area {
+  padding: 15px;
+  background-color: #252525;
+  border-top: 1px solid #333;
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input-area input {
+  flex: 1;
+  padding: 12px 15px;
+  border-radius: 25px;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.chat-input-area input:focus {
+  border-color: #646cff;
+}
+
+.chat-input-area button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background-color: #646cff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.chat-input-area button:hover {
+  background-color: #535bf2;
+}
+
+/* --- Στυλ για την κάρτα Login --- */
+.login-card {
+  background-color: #1e1e1e;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 1px solid #333;
+}
+
+.login-card h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.login-card input {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background-color: #121212;
+  color: white;
+  margin-right: 10px;
+}
+
+.login-card button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #4ade80; /* Πράσινο κουμπί */
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* --- Στυλ για το Όνομα μέσα στο μήνυμα --- */
+.message-bubble {
+  display: flex;
+  flex-direction: column; /* Το όνομα πάνω από το κείμενο */
+  gap: 2px;
+}
+
+.msg-user {
+  font-size: 0.75rem; /* Πολύ μικρά γράμματα */
+  color: #a0a0a0;     /* Γκρι χρώμα */
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.msg-text {
+  font-size: 0.95rem;
+}
+
+/* Αν θέλεις να ξεχωρίζεις τα ΔΙΚΑ σου μηνύματα */
+.my-message {
+  align-self: flex-end; /* Πάει δεξιά */
+  background-color: #646cff; /* Μπλε φόντο */
+}
+
+.my-message .msg-user {
+  color: #e0e0e0; /* Πιο ανοιχτό γκρι για να φαίνεται στο μπλε */
+  text-align: right;
+}
