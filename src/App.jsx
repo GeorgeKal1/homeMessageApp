@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
 import Messages from "./messages.jsx";
 
-const socket = io("http://192.168.2.12:3001");
+const socket = io("http://172.30.80.79:3001");
 
 function App() {
   const [messages, setMessages] = useState([]);
